@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="kandang">
+    <h1>Suhu</h1>
+        <label class="suhu" for="suhu1">dari : </label>
+        <select class="op" id="suhu1" name="suhu1">
+            <option value="C" >Celsius</option>
+            <option value="Re" >Reamur</option>
+            <option value="F" >Fahrenheit</option>
+            <option value="K" >Kelvin</option>
+            <option value="R" >Rankine</option>
+        </select>
+        <label class="suhu" for="suhu2">ke : </label>
+        <select class="op" id="suhu2" name="suhu2">
+            <option value="C" >Celsius</option>
+            <option value="Re" >Reamur</option>
+            <option value="F" >Fahrenheit</option>
+            <option value="K" >Kelvin</option>
+            <option value="R" >Rankine</option>
+        </select><br>
+        <label class="suhu" for="sh">berapa:</label>
+        <input type=" number " class="op" name="sh" id="sh" inputmode="numerik" /><br>
+    
+        <button  onclick="ubah()" >hasil</button>
+    <br>
+     <p class="hasil" id="hasil"></p>
+    </div>
+    
+
+    <script>
+        function ubah(){
+            const tempra = document.getElementById('sh').value;
+            const suhu1 = document.getElementById('suhu1').value;
+            const suhu2 = document.getElementById('suhu2').value;
+            const hasil = document.getElementById('hasil');
+
+            if (tempra === '') {
+                hasil.innerHTML = 'kosong';
+            }
+
+            const temp = parseFloat(tempra);
+            let rumus;
+            switch (suhu1) {
+                case 'C':
+                    if (suhu2 === 'F') {
+                        rumus = (temp * 9/5) + 32;
+                        hasil.innerHTML = `${rumus}°F`;
+                    }else if (suhu2 === 'Re') {
+                        rumus = 4/5 * temp;
+                        hasil.innerHTML = `${rumus}°Re`;
+                    }else if (suhu2 === 'K') {
+                        rumus = temp + 273;
+                        hasil.innerHTML = `${rumus}°K`;
+                    }else if (suhu2 === 'R') {
+                        rumus = (temp + 273.15)*9/5;
+                        hasil.innerHTML = `${rumus}°R`;
+                    }else{
+                        hasil.innerHTML = 'kosong';
+                    }
+                    break;
+
+                    case 'Re':
+                    if (suhu2 === 'F') {
+                        rumus = (9/4 * temp) + 32;
+                        hasil.innerHTML = `${rumus}°F`;
+                    }else if (suhu2 === 'C') {
+                        rumus = 5/4 * temp;
+                        hasil.innerHTML = `${rumus}°Re`;
+                    }else if (suhu2 === 'K') {
+                        rumus = (5/4 * temp) + 273;
+                        hasil.innerHTML = `${rumus}°K`;
+                    }else if (suhu2 === 'R') {
+                        rumus = (temp*2.25)+491.67;
+                        hasil.innerHTML = `${rumus}°R`;
+                    }else{
+                        hasil.innerHTML = 'kosong';
+                    }
+                    break;
+
+
+                    case 'F':
+                    if (suhu2 === 'C') {
+                        rumus = 5/9 * (temp-32);
+                        hasil.innerHTML = `${rumus}°F`;
+                    }else if (suhu2 === 'Re') {
+                        rumus = 4/9 * (temp-32);
+                        hasil.innerHTML = `${rumus}°Re`;
+                    }else if (suhu2 === 'K') {
+                        rumus = 5/9 * (temp-32) + 273;
+                        hasil.innerHTML = `${rumus}°K`;
+                    }else if (suhu2 === 'R') {
+                        rumus = temp+459.67;
+                        hasil.innerHTML = `${rumus}°R`;
+                    }else{
+                        hasil.innerHTML = 'kosong';
+                    }
+                    break;
+
+                    case 'K':
+                    if (suhu2 === 'F') {
+                        rumus = 9/5 * (temp- 273) + 32;
+                        hasil.innerHTML = `${rumus}°F`;
+                    }else if (suhu2 === 'Re') {
+                        rumus = 4/5 * (temp - 273);
+                        hasil.innerHTML = `${rumus}°Re`;
+                    }else if (suhu2 === 'C') {
+                        rumus = temp - 273;
+                        hasil.innerHTML = `${rumus}°K`;
+                    }else if (suhu2 === 'R') {
+                        rumus = temp*9/5;
+                        hasil.innerHTML = `${rumus}°R`;
+                    }else{
+                        hasil.innerHTML = 'kosong';
+                    }
+                    break;
+
+                    case 'R':
+                    if (suhu2 === 'F') {
+                        rumus = temp - 459.67;
+                        hasil.innerHTML = `${rumus}°F`;
+                    }else if (suhu2 === 'Re') {
+                        rumus = (temp - 491.67) * 4/9;
+                        hasil.innerHTML = `${rumus}°Re`;
+                    }else if (suhu2 === 'K') {
+                        rumus = temp * 5/9;
+                        hasil.innerHTML = `${rumus}°K`;
+                    }else if (suhu2 === 'C') {
+                        rumus = (temp - 491.67) * 5/9;
+                        hasil.innerHTML = `${rumus}°R`;
+                    }else{
+                        hasil.innerHTML = 'kosong';
+                    }
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+    </script>
+</body> 
+</html>
